@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.sass-cache
+/bin
+/obj/Debug
+/main.js.map
+/web.Debug.config
+/web.Release.config
+/SlotMachine.csproj.user
+/SlotMachine.csproj

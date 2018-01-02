@@ -1,0 +1,42 @@
+/* line 64, diamonds/*.png */
+.diamonds-sprite {
+  background-image: url('../img/diamonds-s6406dbfa96.png');
+  background-repeat: no-repeat;
+}
+
+/* line 4, ../scss/style.scss */
+.wrapper {
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* line 14, ../scss/style.scss */
+#navigation {
+  margin-top: 15px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #2b8906;
+  border: 2px solid #172602;
+  padding: 4px;
+}
+/* line 23, ../scss/style.scss */
+#navigation #spin {
+  display: block;
+  box-sizing: content-box;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #84d12e;
+  border: 2px solid #6dbb13;
+  background-image: url(../img/refresh.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40px;
+  padding: 10px;
+}
