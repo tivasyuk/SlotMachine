@@ -1,5 +1,28 @@
-﻿@import "compass/utilities/sprites";
-@import "diamonds/*.png";
+﻿@import "compass/reset";
+@import "_sprites";
+
+$primary-color: #6aec00;
+$hover-color: #72ff00;
+
+@mixin gradient($color) {
+    background: $color; /* for non-css3 browsers */ 
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color, endColorstr=$color);
+    background: -webkit-linear-gradient(top, bottom, $color, $color);
+    background: -moz-linear-gradient($color,  $color);
+    background: -o-linear-gradient($color,  $color);
+    background: -ms-linear-gradient($color,  $color);
+    background: linear-gradient($color,  darken($color, 20)); 
+}
+@mixin transform($deg){
+    -moz-transform: rotate($deg); 
+    -o-transform: rotate($deg);
+    -webkit-transform: rotate($deg); 
+}
+@mixin border-radius($border){
+    -webkit-border-radius: $border;
+    -moz-border-radius: $border;
+    border-radius: $border;
+}
 
 .wrapper {
     background-image: url('../img/bg.jpg');
@@ -10,28 +33,37 @@
     justify-content: center;
     height: 100vh;
 }
-
+#game{
+    background-image: url('../img/starburst-game-background.jpg');
+    background-size: cover;
+    padding: 20px;
+}
 #navigation {
     margin-top: 15px;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background-color: #2b8906;
-    border: 2px solid #172602;
+    width: 62px;
+    height: 62px;
+    @include border-radius(50%);
+    @include gradient($primary-color);
+    border: 1px solid darken($primary-color, 60);
+    box-shadow: 0px 0px 18px 0px darken($primary-color, 40) inset;
     padding: 4px;
-
+    &:hover{
+        @include gradient($hover-color);
+        box-shadow: 0px 0px 18px 0px darken($primary-color, 20) inset;
+    }
     #spin {
-        display: block;
         box-sizing: content-box;
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background-color: #84d12e;
-        border: 2px solid #6dbb13;
-        background-image: url(../img/refresh.png);
-        background-repeat: no-repeat;
-        background-position: center;
+        border: 1px solid lighten($hover-color, 20);
+        background: transparent url(../img/refresh.png) no-repeat center center;
         background-size: 40px;
         padding: 10px;
+        @include transform(45deg);
+        &:focus{
+            outline: none;
+        }
     }
 }
+

@@ -1,10 +1,75 @@
-/* line 64, diamonds/*.png */
-.diamonds-sprite {
-  background-image: url('../img/diamonds-s6406dbfa96.png');
+/* line 5, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 96, gems/*.png */
+.gems-sprite {
+  background-image: url('../img/gems-s3ec6b0050c.png');
   background-repeat: no-repeat;
 }
 
-/* line 4, ../scss/style.scss */
+/* line 27, ../scss/style.scss */
 .wrapper {
   background-image: url("../img/bg.jpg");
   background-size: cover;
@@ -15,28 +80,60 @@
   height: 100vh;
 }
 
-/* line 14, ../scss/style.scss */
+/* line 36, ../scss/style.scss */
+#game {
+  background-image: url("../img/starburst-game-background.jpg");
+  background-size: cover;
+  padding: 20px;
+}
+
+/* line 41, ../scss/style.scss */
 #navigation {
   margin-top: 15px;
-  width: 64px;
-  height: 64px;
+  width: 62px;
+  height: 62px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
-  background-color: #2b8906;
-  border: 2px solid #172602;
+  background: #6aec00;
+  /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color, endColorstr=$color);
+  background: -webkit-linear-gradient(top, bottom, #6aec00, #6aec00);
+  background: -moz-linear-gradient(#6aec00, #6aec00);
+  background: -o-linear-gradient(#6aec00, #6aec00);
+  background: -ms-linear-gradient(#6aec00, #6aec00);
+  background: linear-gradient(#6aec00, #3c8600);
+  border: 1px solid black;
+  box-shadow: 0px 0px 18px 0px #0e2000 inset;
   padding: 4px;
 }
-/* line 23, ../scss/style.scss */
+/* line 50, ../scss/style.scss */
+#navigation:hover {
+  background: #72ff00;
+  /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color, endColorstr=$color);
+  background: -webkit-linear-gradient(top, bottom, #72ff00, #72ff00);
+  background: -moz-linear-gradient(#72ff00, #72ff00);
+  background: -o-linear-gradient(#72ff00, #72ff00);
+  background: -ms-linear-gradient(#72ff00, #72ff00);
+  background: linear-gradient(#72ff00, #449900);
+  box-shadow: 0px 0px 18px 0px #3c8600 inset;
+}
+/* line 54, ../scss/style.scss */
 #navigation #spin {
-  display: block;
   box-sizing: content-box;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #84d12e;
-  border: 2px solid #6dbb13;
-  background-image: url(../img/refresh.png);
-  background-repeat: no-repeat;
-  background-position: center;
+  border: 1px solid #aaff66;
+  background: transparent url(../img/refresh.png) no-repeat center center;
   background-size: 40px;
   padding: 10px;
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+/* line 64, ../scss/style.scss */
+#navigation #spin:focus {
+  outline: none;
 }

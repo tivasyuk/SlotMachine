@@ -13,24 +13,35 @@
 
         let game = (<HTMLCanvasElement>document.getElementById("game"));
         let ctx = game.getContext("2d");
+        let lines = game.getContext("2d");
 
         game.width = data.columns * data.sizeInField + (data.columns + 1) * data.marginX;
         game.height = data.rows * data.sizeInField + (data.rows + 1) * data.marginY;
 
-        let bg = new Image();
-        bg.src = "https://cdn.wccftech.com/wp-content/uploads/2016/09/spacee.jpg";
+
+        /*var grd = lines.createLinearGradient(0, 0, 0, game.height);
+        grd.addColorStop(0, "transparent");
+        grd.addColorStop(0.5, "#eba8d3");
+        grd.addColorStop(1, "transparent");
+        lines.fillStyle = grd;
+
+        lines.shadowOffsetX = 0;
+        lines.shadowOffsetY = 0;
+        lines.shadowBlur = 20;
+        lines.shadowColor = '#eba8d3';
+
+        for (var i = 0; i < 7; i++) {
+            lines.fillRect(20 + data.sizeInField * i + data.marginX * i, 0, 4, game.height);
+        }*/
+
 
         let pic = new Image();
-        pic.src = "img/diamonds-s6406dbfa96.png";
-
-        /*bg.onload = function () {
-            ctx.drawImage(bg, 0, 0, game.width, game.height);
-        }*/
+        pic.src = "img/gems-s3ec6b0050c.png";
 
         let img: Array<number> = [];
         let coord: Array<number> = [];
 
-        for (var i = 0; i <= 2; i++) {
+        for (var i = 0; i <= 6; i++) {
             coord[i] = i * data.size;
         }
 
@@ -43,17 +54,18 @@
             var k = 0;
             for (var i = 0; i < 5; i++) {
                 for (var j = 0; j < 3; j++) {
-                    //sprite position in x, in y. size in x, in y. field position in x, in y. width, height.
                     var dataPosX = data.marginX * (i + 1) + i * data.sizeInField;
                     var dataPosY = data.marginY * (j + 1) + j * data.sizeInField;
 
-                    ctx.drawImage(pic, 0, img[k], data.size, data.size, dataPosX, dataPosY, 100, 100);
+                    //sprite position in x, in y. size in x, in y. field position in x, in y. width, height.
+                    ctx.drawImage(pic, 0, img[k], data.size, data.size, dataPosX, dataPosY, data.sizeInField, data.sizeInField);
                     k++;
                 }
             }
         }
 
-        var currentFrame = 0;
+
+        var offsetY = 0;
 
         var array = new Array<Object>();
 
@@ -64,8 +76,8 @@
 
             ctx.clearRect(dataPosX, 0, data.sizeInField, game.height);
 
-            for (var j = 18 * 5; j >= 0; j--) {
-                var dataPosY = -array[col].currentFrame + j * 120 + 20;
+            for (var j = 90; j >= 0; j--) {
+                var dataPosY = -array[col].offsetY + j * (data.sizeInField + data.marginY) + data.marginY;
 
                 ctx.drawImage(pic, 0, img[k], data.size, data.size, dataPosX, dataPosY, data.sizeInField, data.sizeInField);
 
@@ -75,8 +87,8 @@
                     k++;
                 }
 
-                if (array[col].currentFrame < data.sizeInField * 18 * 5) {
-                    array[col].currentFrame++;
+                if (array[col].offsetY < data.sizeInField * 91) {
+                    array[col].offsetY++;
                 }
                 else
                 {
@@ -87,37 +99,13 @@
             }
         }
 
-        // var currentFrame = 0;
-        //function draw() {
-        //    var index = 0;
-
-        //    for (var column = 0; column < 5; column++) {
-
-        //        var dataPosX = data.marginX * (column + 1) + column * data.sizeInField;
-
-        //        ctx.clearRect(dataPosX, 0, data.sizeInField, game.height);
-
-        //        for (var row = 0; row < 18; row++) {
-        //            var dataPosY = -currentFrame + row * 120 + 20;
-
-        //            ctx.drawImage(pic, 0, img[index], data.size, data.size, dataPosX, dataPosY, data.sizeInField, data.sizeInField);
-
-        //            if (currentFrame <= data.sizeInField * 18) {
-        //                currentFrame++;
-        //            }
-
-        //            index++;
-        //        }
-        //    }
-        //}
-
         $(() => {
             $("#spin").click(() => {
 
                 $("#spin").attr('disabled', "disabled");
 
                 for (var i = 0; i < array.length; i++) {
-                    array[i].currentFrame = 0;
+                    array[i].offsetY = 0;
 
                     clearInterval(array[i].interval);
                 }
@@ -132,7 +120,7 @@
                         };
                     }
 
-                    createColumn(i, 350 * i, callback);
+                    createColumn(i, data.speed * i, callback);
                 }
 
                 array = [];
@@ -147,11 +135,9 @@
         });
 
         function createColumn(col, timeout, callback) {
-            currentFrame = 0;
-
             setTimeout(function () {
                 array.push( {
-                    currentFrame: 0,
+                    offsetY: 0,
                     interval: setInterval(draw, 30, col),
                     callback: callback
                 })
@@ -175,5 +161,4 @@
 
 window.onload = () => {
     var machine = new SlotMachine();
-    //machine.animate();
 };
