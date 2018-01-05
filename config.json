@@ -1,9 +1,11 @@
 {
-  "size": 120,
+  "sizeSpriteImage": 120,
   "marginX": 40,
   "marginY": 20,
-  "sizeInField": 120,
+  "sizeImageInField": 120,
   "columns": 5,
   "rows": 3,
-  "speed": 350
+  "speed": 350,
+  "randomImageArraySize": 60,
+  "drawLinesColor": "#eba8d3"
 }
