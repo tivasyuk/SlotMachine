@@ -88,10 +88,9 @@ class SlotMachine {
             //disabled button when reels spinning
             $("#spin").attr('disabled', "disabled");
 
-            //clear data for next spinning
+            //clear offsetY for next spinning
             for (let i = 0; i < this.dataSpin.length; i++) {
                 this.dataSpin[i].offsetY = 0;
-                clearInterval(this.dataSpin[i].interval);
             }
 
             //start reels spinning in every columns
@@ -165,6 +164,7 @@ class SlotMachine {
                 if (this.dataSpin[col]  && typeof this.dataSpin[col].callback === 'function') {
                     this.dataSpin[col].callback();
                 }
+                clearInterval(this.dataSpin[col].interval);
             }
         }
     }

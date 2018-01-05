@@ -75,10 +75,9 @@ var SlotMachine = (function () {
         $("#spin").on("click", function () {
             //disabled button when reels spinning
             $("#spin").attr('disabled', "disabled");
-            //clear data for next spinning
+            //clear offsetY for next spinning
             for (var i = 0; i < _this.dataSpin.length; i++) {
                 _this.dataSpin[i].offsetY = 0;
-                clearInterval(_this.dataSpin[i].interval);
             }
             //start reels spinning in every columns
             for (var i = 0; i < _this.data.columns; i++) {
@@ -137,6 +136,7 @@ var SlotMachine = (function () {
                 if (this.dataSpin[col] && typeof this.dataSpin[col].callback === 'function') {
                     this.dataSpin[col].callback();
                 }
+                clearInterval(this.dataSpin[col].interval);
             }
         }
     };
