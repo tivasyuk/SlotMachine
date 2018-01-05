@@ -15,9 +15,9 @@ var SlotMachine = (function () {
         this.dataSpin = new Array();
         this.game = document.getElementById("game");
         this.ctx = this.game.getContext("2d");
+        this.data = this.loadConfig();
         this.pic = new Image();
         this.pic.src = "img/gems-s3ec6b0050c.png";
-        this.data = this.loadConfig();
         this.loadImages();
         this.handleEvents();
     }
@@ -139,9 +139,22 @@ var SlotMachine = (function () {
         var data;
         $.ajax({
             url: 'config.json',
-            async: false,
+            async: false
         }).done(function (response) {
             data = response;
+        }).fail(function () {
+            //datas for local game
+            data = {
+                "sizeSpriteImage": 120,
+                "marginX": 40,
+                "marginY": 20,
+                "sizeImageInField": 120,
+                "columns": 5,
+                "rows": 3,
+                "speed": 350,
+                "randomImageArraySize": 60,
+                "drawLinesColor": "#eba8d3"
+            };
         });
         return data;
     };
