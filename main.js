@@ -15,7 +15,13 @@ var SlotMachine = (function () {
         this.dataSpin = new Array();
         this.game = document.getElementById("game");
         this.ctx = this.game.getContext("2d");
-        this.data = this.loadConfig();
+        if (localStorage.length == 1) {
+            var retrievedObject = localStorage.getItem('configObject');
+            this.data = JSON.parse(retrievedObject);
+        }
+        else {
+            this.data = this.loadConfig();
+        }
         this.pic = new Image();
         this.pic.src = "img/gems-s3ec6b0050c.png";
         this.loadImages();
@@ -156,6 +162,7 @@ var SlotMachine = (function () {
                 "drawLinesColor": "#eba8d3"
             };
         });
+        localStorage.setItem('configObject', JSON.stringify(data));
         return data;
     };
     return SlotMachine;
