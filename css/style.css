@@ -69,7 +69,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-repeat: no-repeat;
 }
 
-/* line 27, ../scss/style.scss */
+/* line 6, ../scss/style.scss */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+/* line 11, ../scss/style.scss */
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* line 16, ../scss/style.scss */
 .wrapper {
   background-image: url("../img/bg.jpg");
   background-size: cover;
@@ -80,14 +94,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: 100vh;
 }
 
-/* line 36, ../scss/style.scss */
+/* line 25, ../scss/style.scss */
 #game {
   background-image: url("../img/starburst-game-background.jpg");
   background-size: cover;
   padding: 20px;
 }
 
-/* line 41, ../scss/style.scss */
+/* line 30, ../scss/style.scss */
 #navigation {
   margin-top: 15px;
   width: 62px;
@@ -97,29 +111,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-radius: 50%;
   background: #6aec00;
   /* for non-css3 browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color, endColorstr=$color);
-  background: -webkit-linear-gradient(top, bottom, #6aec00, #6aec00);
-  background: -moz-linear-gradient(#6aec00, #6aec00);
-  background: -o-linear-gradient(#6aec00, #6aec00);
-  background: -ms-linear-gradient(#6aec00, #6aec00);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$start_color, endColorstr=$end_color);
+  background: -webkit-linear-gradient(top, bottom, #6aec00, #3c8600);
+  background: -moz-linear-gradient(#6aec00, #3c8600);
+  background: -o-linear-gradient(#6aec00, #3c8600);
+  background: -ms-linear-gradient(#6aec00, #3c8600);
   background: linear-gradient(#6aec00, #3c8600);
   border: 1px solid black;
   box-shadow: 0px 0px 18px 0px #0e2000 inset;
   padding: 4px;
 }
-/* line 50, ../scss/style.scss */
+/* line 39, ../scss/style.scss */
 #navigation:hover {
   background: #72ff00;
   /* for non-css3 browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color, endColorstr=$color);
-  background: -webkit-linear-gradient(top, bottom, #72ff00, #72ff00);
-  background: -moz-linear-gradient(#72ff00, #72ff00);
-  background: -o-linear-gradient(#72ff00, #72ff00);
-  background: -ms-linear-gradient(#72ff00, #72ff00);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$start_color, endColorstr=$end_color);
+  background: -webkit-linear-gradient(top, bottom, #72ff00, #449900);
+  background: -moz-linear-gradient(#72ff00, #449900);
+  background: -o-linear-gradient(#72ff00, #449900);
+  background: -ms-linear-gradient(#72ff00, #449900);
   background: linear-gradient(#72ff00, #449900);
   box-shadow: 0px 0px 18px 0px #3c8600 inset;
 }
-/* line 54, ../scss/style.scss */
+/* line 43, ../scss/style.scss */
 #navigation #spin {
   box-sizing: content-box;
   width: 40px;
@@ -133,7 +147,114 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
-/* line 64, ../scss/style.scss */
+/* line 53, ../scss/style.scss */
 #navigation #spin:focus {
   outline: none;
+}
+
+/* line 59, ../scss/style.scss */
+#win {
+  position: absolute;
+  background-image: url("../img/win.png");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 67, ../scss/style.scss */
+.rules {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+/* line 71, ../scss/style.scss */
+.rules a {
+  color: #bbb;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+/* line 76, ../scss/style.scss */
+.rules a:hover {
+  color: #fff;
+}
+
+/* line 81, ../scss/style.scss */
+.modalDialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  color: #fff;
+  display: none;
+}
+/* line 92, ../scss/style.scss */
+.modalDialog > div {
+  width: 400px;
+  position: relative;
+  margin: 10% auto;
+  padding: 25px 20px 25px 20px;
+  border: 5px solid #733767;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0px 0px 7px 3px #ba6fab;
+  -webkit-box-shadow: 0px 0px 7px 3px #ba6fab;
+  box-shadow: 0px 0px 7px 3px #ba6fab;
+  background: black;
+  /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$start_color, endColorstr=$end_color);
+  background: -webkit-linear-gradient(top, bottom, black, #140c1e);
+  background: -moz-linear-gradient(black, #140c1e);
+  background: -o-linear-gradient(black, #140c1e);
+  background: -ms-linear-gradient(black, #140c1e);
+  background: linear-gradient(black, #140c1e);
+}
+
+/* line 103, ../scss/style.scss */
+.close {
+  background: #6aec00;
+  /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$start_color, endColorstr=$end_color);
+  background: -webkit-linear-gradient(top, bottom, #6aec00, #3c8600);
+  background: -moz-linear-gradient(#6aec00, #3c8600);
+  background: -o-linear-gradient(#6aec00, #3c8600);
+  background: -ms-linear-gradient(#6aec00, #3c8600);
+  background: linear-gradient(#6aec00, #3c8600);
+  color: #fff;
+  line-height: 20px;
+  position: absolute;
+  right: 4px;
+  text-align: center;
+  top: 4px;
+  width: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 0px 0px 5px 0px #9cff4d;
+  -webkit-box-shadow: 0px 0px 5px 0px #9cff4d;
+  box-shadow: 0px 0px 5px 0px #9cff4d;
+}
+/* line 116, ../scss/style.scss */
+.close:hover {
+  background: #72ff00;
+  /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$start_color, endColorstr=$end_color);
+  background: -webkit-linear-gradient(top, bottom, #72ff00, #449900);
+  background: -moz-linear-gradient(#72ff00, #449900);
+  background: -o-linear-gradient(#72ff00, #449900);
+  background: -ms-linear-gradient(#72ff00, #449900);
+  background: linear-gradient(#72ff00, #449900);
+  -moz-box-shadow: 0px 0px 15px 0px #b9ff80;
+  -webkit-box-shadow: 0px 0px 15px 0px #b9ff80;
+  box-shadow: 0px 0px 15px 0px #b9ff80;
 }

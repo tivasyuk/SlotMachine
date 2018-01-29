@@ -11,9 +11,19 @@
     <script src="main.js"></script>
 </head>
 <body>
+    <div class="rules"><a href="#" data-modal="rulesModal">Rules</a></div>
     <div class="wrapper">
+        <button type="button" class="play  btn btn-primary">Play</button>
         <canvas id="game"></canvas>
         <nav id="navigation"><button id="spin"></button></nav>
+    </div>
+
+    <div id="rulesModal" class="modalDialog">
+        <div>
+            <a href="#" title="Close" class="close">X</a>
+            <h2>Game rules</h2>
+            <p>You win if at least one of the rows will have 3 or more identical gems in a row</p>
+        </div>
     </div>
 </body>
 </html>

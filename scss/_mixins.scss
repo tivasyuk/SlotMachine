@@ -1,0 +1,29 @@
+﻿@mixin gradient($start_color, $end_color) {
+    background: $start_color; /* for non-css3 browsers */ 
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$start_color, endColorstr=$end_color);
+    background: -webkit-linear-gradient(top, bottom, $start_color, $end_color);
+    background: -moz-linear-gradient($start_color,  $end_color);
+    background: -o-linear-gradient($start_color,  $end_color);
+    background: -ms-linear-gradient($start_color,  $end_color);
+    background: linear-gradient($start_color,  $end_color); 
+}
+@mixin transform($deg){
+    -moz-transform: rotate($deg); 
+    -o-transform: rotate($deg);
+    -webkit-transform: rotate($deg); 
+}
+@mixin border-radius($border){
+    -webkit-border-radius: $border;
+    -moz-border-radius: $border;
+    border-radius: $border;
+}
+@mixin transition($time){
+    -webkit-transition: opacity $time ease-in;
+	-moz-transition: opacity $time ease-in;
+	transition: opacity $time ease-in;
+}
+@mixin box-shadow($pr, $pl, $blur, $spread, $color){
+	-moz-box-shadow: $pr $pl $blur $spread $color;
+	-webkit-box-shadow: $pr $pl $blur $spread $color;
+	box-shadow: $pr $pl $blur $spread $color;
+}

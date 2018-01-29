@@ -1,29 +1,18 @@
 ﻿@import "compass/reset";
 @import "_sprites";
+@import "_colors";
+@import "_mixins";
 
-$primary-color: #6aec00;
-$hover-color: #72ff00;
-
-@mixin gradient($color) {
-    background: $color; /* for non-css3 browsers */ 
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color, endColorstr=$color);
-    background: -webkit-linear-gradient(top, bottom, $color, $color);
-    background: -moz-linear-gradient($color,  $color);
-    background: -o-linear-gradient($color,  $color);
-    background: -ms-linear-gradient($color,  $color);
-    background: linear-gradient($color,  darken($color, 20)); 
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 22px;
 }
-@mixin transform($deg){
-    -moz-transform: rotate($deg); 
-    -o-transform: rotate($deg);
-    -webkit-transform: rotate($deg); 
+h2{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 14px;
 }
-@mixin border-radius($border){
-    -webkit-border-radius: $border;
-    -moz-border-radius: $border;
-    border-radius: $border;
-}
-
 .wrapper {
     background-image: url('../img/bg.jpg');
     background-size: cover;
@@ -43,12 +32,12 @@ $hover-color: #72ff00;
     width: 62px;
     height: 62px;
     @include border-radius(50%);
-    @include gradient($primary-color);
+    @include gradient($primary-color, darken($primary-color, 20));
     border: 1px solid darken($primary-color, 60);
     box-shadow: 0px 0px 18px 0px darken($primary-color, 40) inset;
     padding: 4px;
     &:hover{
-        @include gradient($hover-color);
+        @include gradient($hover-color, darken($hover-color, 20));
         box-shadow: 0px 0px 18px 0px darken($primary-color, 20) inset;
     }
     #spin {
@@ -67,3 +56,65 @@ $hover-color: #72ff00;
     }
 }
 
+#win{
+    position: absolute;
+    background-image: url('../img/win.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    width: 100%;
+    height: 100%;
+}
+.rules{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    a{
+        color: #bbb;
+        font-size: 20px;
+        text-decoration: none;
+        transition: all 0.3s;
+        &:hover{
+            color: #fff;
+        }
+    }
+}
+.modalDialog {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+    @include transition(400ms);
+    color: #fff;
+    display: none;
+    > div {
+	    width: 400px;
+	    position: relative;
+	    margin: 10% auto;
+	    padding: 25px 20px 25px 20px;
+        border: 5px solid $modal-border;
+        @include border-radius(10px);
+        @include box-shadow(0px, 0px, 7px, 3px, lighten($modal-border, 25));
+        @include gradient(darken($modal-bg, 20), $modal-bg);
+    }
+}
+.close {
+	@include gradient($primary-color, darken($primary-color, 20));
+	color: #fff;
+	line-height: 20px;
+	position: absolute;
+	right: 4px;
+	text-align: center;
+	top: 4px;
+	width: 20px;
+	text-decoration: none;
+	font-weight: bold;
+	@include border-radius(4px);
+    @include box-shadow(0px, 0px, 5px, 0px, lighten($hover-color, 15));
+    &:hover { 
+        @include gradient($hover-color, darken($hover-color, 20));
+        @include box-shadow(0px, 0px, 15px, 0px, lighten($hover-color, 25));
+    }
+}
